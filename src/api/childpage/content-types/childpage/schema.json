@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "pages",
+  "collectionName": "childpages",
   "info": {
-    "singularName": "page",
-    "pluralName": "pages",
-    "displayName": "Page"
+    "singularName": "childpage",
+    "pluralName": "childpages",
+    "displayName": "Childpage"
   },
   "options": {
     "draftAndPublish": true
@@ -22,7 +22,7 @@
       "type": "string"
     },
     "seoDescription": {
-      "type": "string"
+      "type": "text"
     },
     "canonicalUrl": {
       "type": "string"
@@ -32,7 +32,7 @@
     },
     "ogImage": {
       "type": "media",
-      "multiple": true,
+      "multiple": false,
       "allowedTypes": [
         "images",
         "files",
@@ -43,21 +43,21 @@
     "jsonLd": {
       "type": "json"
     },
-    "childpages": {
+    "page": {
       "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::childpage.childpage",
-      "mappedBy": "page"
+      "relation": "manyToOne",
+      "target": "api::page.page",
+      "inversedBy": "childpages"
     },
-    "Sections": {
+    "sections": {
       "type": "dynamiczone",
       "components": [
-        "sections.hero",
         "sections.text-left",
         "sections.text-center",
-        "sections.section1",
         "sections.section2",
-        "sections.item-section"
+        "sections.section1",
+        "sections.item-section",
+        "sections.hero"
       ]
     }
   }
